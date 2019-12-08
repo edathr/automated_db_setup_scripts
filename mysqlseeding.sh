@@ -1,6 +1,6 @@
 #!/bin/bash
 wget -c https://istd50043.s3-ap-southeast-1.amazonaws.com/kindle-reviews.zip -O kindle-reviews.zip
-sudo apt install unzip
+sudo apt install unzip -y 
 unzip kindle-reviews.zip
 rm -rf kindle_reviews.json
 rm -rf *.zip

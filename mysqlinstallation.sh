@@ -1,9 +1,6 @@
 #!/bin/bash
 sudo apt-get update
-sudo apt-get install mysql-server
-sudo ufw enable
-sudo ufw allow ssh
-sudo ufw allow mysql
+sudo apt-get install mysql-server -y
 sudo systemctl start mysql
 sudo systemctl enable mysql
 sudo sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
