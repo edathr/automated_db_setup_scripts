@@ -1,7 +1,11 @@
 #!/bin/bash
-sudo mongo --eval "db.getSiblingDB('50043db').createUser({user: 'faveadmin', pwd: 'password', roles: ['readWrite']})"
+sudo mongo -u Admin << EOF
+use 50043db
+db.createUser({user: 'faveadmin', pwd: 'password', roles: ['readWrite']})
+db.createCollection('kindle_metadata2')
+EOF
 wget https://istd50043.s3-ap-southeast-1.amazonaws.com/meta_kindle_store.zip -O meta_kindle_store.zip
 sudo apt install unzip
 unzip meta_kindle_store.zip
 rm -rf *.zip
-sudo mongoimport --drop --db 50043db --collection kindle_metadata2 --file meta_Kindle_Store.json
+sudo mongoimport --legacy --drop --db 50043db --collection kindle_metadata2 --file meta_Kindle_Store.json

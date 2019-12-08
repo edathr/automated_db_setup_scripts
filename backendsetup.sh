@@ -3,7 +3,7 @@ sudo apt update
 git clone https://github.com/edathr/backend
 cd backend
 sudo apt install python-pip -y 
-sudo pip install virtualenv -y 
+sudo pip install virtualenv 
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
