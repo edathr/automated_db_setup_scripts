@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo mongo -u Admin << EOF
+sudo mongo << EOF
 use 50043db
 db.createUser({user: 'faveadmin', pwd: 'password', roles: ['readWrite']})
 db.createCollection('kindle_metadata2')

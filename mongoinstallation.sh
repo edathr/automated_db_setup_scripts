@@ -13,4 +13,3 @@ sudo ufw allow ssh
 sudo ufw allow 27017
 sudo sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
 sudo systemctl restart mongod
-sudo systemctl status mongod

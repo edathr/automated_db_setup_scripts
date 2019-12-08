@@ -2,8 +2,10 @@
 sudo apt update
 git clone https://github.com/edathr/backend
 cd backend
+sudo rm -R env
 sudo apt install python-pip -y 
-sudo pip install virtualenv 
+sudo pip install virtualenv
+sudo apt install python3-flask
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt

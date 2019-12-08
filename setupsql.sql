@@ -16,7 +16,7 @@ create table historical_reviews(
 );
 
 LOAD DATA LOCAL INFILE 'kindle_reviews.csv'
-INTO TABLE Reviews
+INTO TABLE historical_reviews
 FIELDS TERMINATED BY ',' ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
