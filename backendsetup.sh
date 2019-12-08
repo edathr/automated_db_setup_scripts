@@ -5,7 +5,7 @@ cd backend
 sudo rm -R env
 sudo apt install python-pip -y 
 sudo pip install virtualenv
-sudo apt install python3-flask
+sudo apt install python3-flask -y
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
