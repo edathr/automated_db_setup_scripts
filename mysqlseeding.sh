@@ -4,6 +4,5 @@ sudo apt install unzip
 unzip kindle-reviews.zip
 rm -rf kindle_reviews.json
 rm -rf *.zip
-sudo mysql -e "DROP database if exists 50043db;CREATE database 50043db;"
-wget -c https://raw.githubusercontent.com/edathr/master/setupsql.sql -O setupsql.sql 
+sudo mysql -e "DROP database if exists 50043db;CREATE database 50043db;" 
 sudo mysql -u root -b 50043db < setupsql.sql
