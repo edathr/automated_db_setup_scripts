@@ -1,5 +1,5 @@
 #!/bin/bash
-git clone https://github.com/edathr/backend
+git clone https://gitlab.com/lionellloh/public-backend.git
 cd backend
 sudo rm -R env
 virtualenv venv
