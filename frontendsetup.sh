@@ -2,4 +2,4 @@
 git clone https://github.com/edathr/aoogebra_frontend
 cd aoogebra_frontend
 npm install
-npm start
+npm run start:prod
