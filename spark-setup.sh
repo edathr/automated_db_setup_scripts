@@ -200,3 +200,4 @@ if [[ $NODE_TYPE = namenode ]]; then
 fi
 
 wait
+systemctl reboot
