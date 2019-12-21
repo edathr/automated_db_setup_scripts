@@ -5,9 +5,10 @@ set -e
 
 NODE_TYPE=${1::8}	# either 'namenode' or 'datanode'
 N_DATANODES=8
-NAME_NODE=$2
-MYSQL_IP=$3
-MONGO_IP=$4
+NAME_NODE=172.31.0.100
+MYSQL_IP=$2
+MONGO_IP=$3
+PRIV_PEM_BASE64=$4
 HADOOP_HOME=/opt/hadoop
 HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 SPARK_HOME=/opt/spark
@@ -95,6 +96,16 @@ spark_dl=$!
   } > $hdfs_site.2
   rm $hdfs_site
   mv $hdfs_site.2 $hdfs_site
+
+  # write Hadoop slaves file
+  echo "172.31.0.101
+  172.31.0.102
+  172.31.0.103
+  172.31.0.104
+  172.31.0.105
+  172.31.0.106
+  172.31.0.107
+  172.31.0.108" > $HADOOP_CONF_DIR/slaves
 
   # add HDFS as a systemd service
   service="[Unit]

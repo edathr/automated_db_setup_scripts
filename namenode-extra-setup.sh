@@ -57,13 +57,13 @@ extra_apt_install=$!
     echo "namenode extra setup script:" installing Spark control server...
 
     pip3 -q install fabric flask-cors
-    tar zxvf /home/ubuntu/control-server.tgz -C /tmp > /dev/null
-    mv /tmp/control-server $CONTROL_SERVER_HOME
+    git clone https://github.com/busukxuan/analytics-control-server.git
+    mv analytics-control-server $CONTROL_SERVER_HOME
     chmod a+x $CONTROL_SERVER_HOME/control-server
 
-    # move instance private key
+    # write instance private key
     mkdir -p /etc/opt/control-server
-    mv /home/ubuntu/my-hadoop-key.pem /etc/opt/control-server/
+    echo "$PRIV_PEM_BASE64" | base64 --decode > /etc/opt/control-server/my-hadoop-key.pem
 
     # set MySQL and MongoDB IP addresses
     echo $MYSQL_IP > /etc/opt/control-server/mysql-ip
