@@ -13,9 +13,9 @@ HADOOP_HOME=/opt/hadoop
 HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 SPARK_HOME=/opt/spark
 
-# namenode doesn't get its own private ip so just use 127.0.0.1 instead
+# namenode doesn't get its own private ip so just use Python to find that ip address
 if [[ $NAME_NODE = '' ]]; then
-  NAME_NODE=127.0.0.1
+  NAME_NODE=$(python3 -c 'import socket; print(socket.gethostbyname(socket.gethostname()))')
 fi
 
 # update system
