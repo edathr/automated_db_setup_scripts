@@ -14,7 +14,7 @@ CREATE TABLE `historical_reviews` (
   `unix_timestamp` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `ix_historical_reviews_asin` (`asin`)
-)
+);
 
 LOAD DATA LOCAL INFILE 'kindle_reviews_correct_schema.csv'
 INTO TABLE historical_reviews
