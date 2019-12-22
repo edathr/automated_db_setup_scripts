@@ -15,7 +15,7 @@ SPARK_HOME=/opt/spark
 
 # namenode doesn't get its own private ip so just use 127.0.0.1 instead
 if [[ $NAME_NODE = '' ]]; then
-  NAME_NODE=172.0.0.1
+  NAME_NODE=127.0.0.1
 fi
 
 # update system
