@@ -56,7 +56,7 @@ extra_apt_install=$!
 
     echo "namenode extra setup script:" installing Spark control server...
 
-    pip3 -q install fabric flask-cors
+    pip3 -q install fabric flask-cors pymongo
     git clone https://github.com/busukxuan/analytics-control-server.git
     mv analytics-control-server $CONTROL_SERVER_HOME
     chmod a+x $CONTROL_SERVER_HOME/control-server
