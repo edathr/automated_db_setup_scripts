@@ -198,19 +198,19 @@ export HADOOP_CONF_DIR=\$HADOOP_HOME/etc/hadoop" \
 # set up datanode registration service
 if [[ $NODE_TYPE = datanode ]]; then
   echo "[Unit]
-Description=Spark $SPARK_NODE_TYPE service
+Description=Datanode registration service
 Requires=network-online.target
 After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=bash -c 'while true; do curl -X POST http://$NAME_NODE/datanode_register; sleep 10; done'
+ExecStart=/bin/bash -c 'while true; do curl -X POST http://$NAME_NODE/datanode_register; sleep 10; done'
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
-" > /datanode_register.service
-  systemctl enable /datanode_register.service
+" > /datanode-register.service
+  systemctl enable /datanode-register.service
 fi
 
 if [[ $NODE_TYPE = namenode ]]; then
