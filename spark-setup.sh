@@ -5,10 +5,10 @@ set -e
 
 NODE_TYPE=${1::8}	# either 'namenode' or 'datanode'
 N_DATANODES=8
-NAME_NODE=172.31.0.100
-MYSQL_IP=$2
-MONGO_IP=$3
-PRIV_PEM_BASE64=$4
+NAME_NODE=$2
+MYSQL_IP=$3
+MONGO_IP=$4
+PRIV_PEM_BASE64=$5
 HADOOP_HOME=/opt/hadoop
 HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 SPARK_HOME=/opt/spark
@@ -194,6 +194,24 @@ export SPARK_HOME=$SPARK_HOME
 export PATH=\$PATH:\$JAVA_HOME/bin:\$HADOOP_HOME/bin:\$SPARK_HOME/bin
 export HADOOP_CONF_DIR=\$HADOOP_HOME/etc/hadoop" \
   > /etc/profile.d/hadoop-spark.sh
+
+# set up datanode registration service
+if [[ $NODE_TYPE = datanode ]]; then
+  echo "[Unit]
+Description=Spark $SPARK_NODE_TYPE service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=bash -c 'while true; do curl -X POST http://$NAME_NODE/datanode_register; sleep 10; done'
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+" > /datanode_register.service
+  systemctl enable /datanode_register.service
+fi
 
 if [[ $NODE_TYPE = namenode ]]; then
   . namenode-extra-setup.sh
