@@ -10,6 +10,7 @@ db.createUser({user: 'faveadmin', pwd: 'password', roles: [{ role: "userAdminAny
 db.createUser({ user: "aoo-mongo", pwd: "aoopass123", roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]})
 db.createCollection('kindle_metadata2')
 EOF
-sudo mongoimport --legacy --drop --db 50043db --collection kindle_metadata2 --file meta_Kindle_Store.json
+sudo mongoimport --legacy --drop --db 50043db --collection kindle_metadata2 --file newlyadded.json
+sudo mongoimport --legacy --db 50043db --collection kindle_metadata2 --file meta_Kindle_Store.json
 pip3 install -r requirements.txt
 python3 flatten_genre.py
