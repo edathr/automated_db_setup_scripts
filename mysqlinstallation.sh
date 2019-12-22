@@ -10,5 +10,7 @@ sudo systemctl enable mysql
 sudo printf "\n[mysqld]\nbind-address = 0.0.0.0"  >> /etc/mysql/my.cnf #allow external connections
 sudo mysql -e 'update mysql.user set plugin = "mysql_native_password" where user="root"'
 sudo mysql -e 'create user "root"@"%" identified by ""'
+sudo mysql -e 'create user "faveadmin"@"%" identified by "password"'
 sudo mysql -e 'grant all privileges on *.* to "root"@"%" with grant option'
+sudo mysql -e 'grant all on *.* to "faveadmin"@"%" with grant option'
 sudo systemctl restart mysql
